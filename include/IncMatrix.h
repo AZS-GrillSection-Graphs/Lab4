@@ -6,19 +6,17 @@
 #define GRAPHS4_INCMATRIX_H
 
 
-#include "GraphRepresentation.h"
 #include "AdjMatrix.h"
 
 
-class IncMatrix : public GraphRepresentation
+class IncMatrix
 {
 public:
     IncMatrix(const std::vector<std::vector<int>> & adjMatrix);
 
-    virtual void Print() const override;
-    virtual const IncMatrix * Convert(std::string ReprName) const override;
+    virtual void Print() const;
+    void PrintToFile() const;
 
-    virtual void ShowAllRepresentations() const override;
 
 private:
     std::vector<std::vector<int>>m_incMatrix;

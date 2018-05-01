@@ -6,7 +6,7 @@
 #define GRAPHS4_DIGRAPH_H
 
 
-#include "GraphRepresentation.h"
+#include "AdjList.h"
 
 
 class DiGraph
@@ -17,8 +17,10 @@ public:
 
     void PrintAllRepresentations() const;
 
+    void Kosaraju();
+
 private:
-    GraphRepresentation * m_graphRepr;
+    AdjMatrix * m_graphRepr;
 };
 
 #endif //GRAPHS4_DIGRAPH_H

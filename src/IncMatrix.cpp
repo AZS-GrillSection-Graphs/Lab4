@@ -6,6 +6,7 @@
 #include <IncMatrix.h>
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 
 
 IncMatrix::IncMatrix(const std::vector <std::vector<int>> & adjMatrix)
@@ -53,13 +54,15 @@ IncMatrix::IncMatrix(const std::vector <std::vector<int>> & adjMatrix)
 
 void IncMatrix::Print() const
 {
+    PrintToFile();
+
     std::cout << "Macierz Incydencji" << std::endl;
 
     for(auto & row : m_incMatrix)
     {
         for(auto & item : row)
         {
-            std::cout << std::setw(3) << item << " ";
+            std::cout << std::setw(2) << item << " ";
         }
 
         std::cout << std::endl;
@@ -67,13 +70,34 @@ void IncMatrix::Print() const
     std::cout << std::endl;
 }
 
-const IncMatrix * IncMatrix::Convert(std::string ReprName) const
+void IncMatrix::PrintToFile() const
 {
-    // TO DO implement
-    return nullptr;
-}
+    ////////// Macierz incydencji //////////
+    std::ofstream incMatrixFile;
 
-void IncMatrix::ShowAllRepresentations() const
-{
-    // TO DO implement
+    if (!incMatrixFile.is_open())
+    {
+        incMatrixFile.open("MacierzIncydencji.txt", std::ios::out);
+
+        if(!incMatrixFile)
+        {
+            std::cerr << "Failed to open " << "MacierzIncydencji.txt" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    incMatrixFile << "MI" << std::endl;
+
+    for(auto & row : m_incMatrix)
+    {
+        for(auto & item : row)
+        {
+            incMatrixFile << std::setw(2) << item << " ";
+        }
+
+        incMatrixFile << std::endl;
+    }
+    incMatrixFile << std::endl;
+
+    incMatrixFile.close();
 }

@@ -6,19 +6,16 @@
 #define GRAPHS4_ADJLIST_H
 
 
-#include "GraphRepresentation.h"
 #include "AdjMatrix.h"
 
 
-class AdjList : public GraphRepresentation
+class AdjList
 {
 public:
     AdjList(const std::vector<std::vector<int>> & adjMatrix);
 
-    virtual void Print() const override;
-    virtual const AdjList * Convert(std::string ReprName) const override;
+    virtual void Print() const;
 
-    virtual void ShowAllRepresentations() const override;
 
 private:
     std::vector<std::vector<int>>m_adjList;

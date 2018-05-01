@@ -9,6 +9,11 @@
 #include "AdjMatrix.h"
 
 
+int iRand(const int min, const int max)
+{
+    return rand() % max + min;
+}
+
 AdjMatrix::AdjMatrix(const int numberOfVertices, const double probability)
 {
 
@@ -29,7 +34,7 @@ AdjMatrix::AdjMatrix(const int numberOfVertices, const double probability)
     {
         for(int j = 0; j < numberOfVertices; ++j)
         {
-            int random = GraphRepresentation::iRand(1, 100);
+            int random = iRand(1, 100);
             int prob = static_cast<int>(probability * 100);
 
             if(i != j && prob >= random)
@@ -56,45 +61,24 @@ void AdjMatrix::Print() const
     std::cout << std::endl;
 }
 
-const GraphRepresentation * AdjMatrix::Convert(std::string ReprName) const
+AdjList AdjMatrix::ConvertToAdjList() const
 {
-    if(ReprName == "Macierz Sasiedztwa")
-    {
-        return this;
-    }
-    else if (ReprName == "Lista Sasiedztwa")
-    {
-        return this->ConvertToAdjList();
-    }
-    else if (ReprName == "Macierz Incydencji")
-    {
-        return this->ConvertToIncMatrix();
-    }
-    else
-        throw GraphException("Name of graph representation is invalid.");
+    return AdjList(m_adjMatrix);
 }
 
-AdjList * AdjMatrix::ConvertToAdjList() const
+IncMatrix AdjMatrix::ConvertToIncMatrix() const
 {
-    return new AdjList(m_adjMatrix);
-}
-
-IncMatrix *AdjMatrix::ConvertToIncMatrix() const
-{
-    return new IncMatrix(m_adjMatrix);
+    return IncMatrix(m_adjMatrix);
 }
 
 void AdjMatrix::ShowAllRepresentations() const
 {
-    const GraphRepresentation * incMatrix = Convert("Macierz Incydencji");
-    const GraphRepresentation * adjList = Convert("Lista Sasiedztwa");
+    IncMatrix incMatrix = ConvertToIncMatrix();
+    AdjList adjList = ConvertToAdjList();
 
     this->Print();
-    incMatrix->Print();
-    adjList->Print();
-
-    delete incMatrix;
-    delete adjList;
+    incMatrix.Print();
+    adjList.Print();
 }
 
 

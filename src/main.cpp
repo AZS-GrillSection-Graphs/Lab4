@@ -11,5 +11,9 @@ int main(int argc, const char * argv[])
     DiGraph graph(5, 0.3);
     graph.PrintAllRepresentations();
 
+
+    /////////////// Task 2 ///////////////
+
+
     return 0;
 }

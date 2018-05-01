@@ -33,3 +33,8 @@ void DiGraph::PrintAllRepresentations() const
 {
     m_graphRepr->ShowAllRepresentations();
 }
+
+void DiGraph::Kosaraju()
+{
+    AdjList adjList = m_graphRepr->ConvertToAdjList();
+}

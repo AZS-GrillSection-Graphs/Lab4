@@ -10,11 +10,11 @@
 
 AdjList::AdjList(const std::vector<std::vector<int>> & adjMatrix)
 {
-    for(int i = 0; i < adjMatrix.size(); ++i)
+    for(unsigned int i = 0; i < adjMatrix.size(); ++i)
     {
         std::vector<int> row;
 
-        for(int j = 0; j < adjMatrix[i].size(); ++j)
+        for(unsigned int j = 0; j < adjMatrix[i].size(); ++j)
         {
             if(adjMatrix[i][j] == 1)
             {
@@ -39,15 +39,4 @@ void AdjList::Print() const
         std::cout << std::endl;
     }
     std::cout << std::endl;
-}
-
-const AdjList * AdjList::Convert(std::string ReprName) const
-{
-    // TO DO implement
-    return nullptr;
-}
-
-void AdjList::ShowAllRepresentations() const
-{
-    // TO DO implement
 }
