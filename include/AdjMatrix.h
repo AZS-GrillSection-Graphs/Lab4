@@ -9,11 +9,19 @@
 #include "GraphRepresentation.h"
 
 
+class AdjList;
+class IncMatrix;
+
+
 class AdjMatrix : public GraphRepresentation
 {
 public:
     AdjMatrix(const int numberOfVertices, const double probability);
-    void Print() const;
+    virtual void Print() const override;
+    virtual const GraphRepresentation * Convert(std::string ReprName) const override;
+    AdjList * ConvertToAdjList() const;
+    IncMatrix * ConvertToIncMatrix() const;
+    virtual void ShowAllRepresentations() const override;
 
 private:
     std::vector<std::vector<int>>m_adjMatrix;

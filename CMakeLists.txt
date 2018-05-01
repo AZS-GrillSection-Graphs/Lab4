@@ -9,4 +9,4 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g -Wall -Wextra")
 include_directories(include/)
 
 file(GLOB SOURCES "src/*.cpp")
-add_executable(${EXECUTABLE_NAME} ${SOURCES} include/DiGraph.h src/GraphRepresentation.cpp include/GraphRepresentation.h include/AdjMatrix.h src/DiGraph.cpp src/AdjMatrix.cpp include/GraphException.h)
+add_executable(${EXECUTABLE_NAME} ${SOURCES})

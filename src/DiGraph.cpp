@@ -28,3 +28,8 @@ DiGraph::~DiGraph()
 {
     delete m_graphRepr;
 }
+
+void DiGraph::PrintAllRepresentations() const
+{
+    m_graphRepr->ShowAllRepresentations();
+}

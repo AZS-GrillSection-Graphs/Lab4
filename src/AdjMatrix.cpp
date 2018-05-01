@@ -2,6 +2,10 @@
 // Created by piotr on 01.05.18.
 //
 #include <iostream>
+#include <GraphException.h>
+#include <iomanip>
+#include "AdjList.h"
+#include "IncMatrix.h"
 #include "AdjMatrix.h"
 
 
@@ -41,14 +45,56 @@ void AdjMatrix::Print() const
 {
     std::cout << "Macierz Sasiedztwa" << std::endl;
 
-    for(auto row : m_adjMatrix)
+    for(auto & row : m_adjMatrix)
     {
-        for(auto item : row)
+        for(auto & item : row)
         {
-            std::cout << item << " ";
+            std::cout << std::setw(2) << item << " ";
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl;
+}
+
+const GraphRepresentation * AdjMatrix::Convert(std::string ReprName) const
+{
+    if(ReprName == "Macierz Sasiedztwa")
+    {
+        return this;
+    }
+    else if (ReprName == "Lista Sasiedztwa")
+    {
+        return this->ConvertToAdjList();
+    }
+    else if (ReprName == "Macierz Incydencji")
+    {
+        return this->ConvertToIncMatrix();
+    }
+    else
+        throw GraphException("Name of graph representation is invalid.");
+}
+
+AdjList * AdjMatrix::ConvertToAdjList() const
+{
+    return new AdjList(m_adjMatrix);
+}
+
+IncMatrix *AdjMatrix::ConvertToIncMatrix() const
+{
+    return new IncMatrix(m_adjMatrix);
+}
+
+void AdjMatrix::ShowAllRepresentations() const
+{
+    const GraphRepresentation * incMatrix = Convert("Macierz Incydencji");
+    const GraphRepresentation * adjList = Convert("Lista Sasiedztwa");
+
+    this->Print();
+    incMatrix->Print();
+    adjList->Print();
+
+    delete incMatrix;
+    delete adjList;
 }
 
 

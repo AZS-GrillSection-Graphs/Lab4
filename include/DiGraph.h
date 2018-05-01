@@ -15,6 +15,8 @@ public:
     DiGraph(const int numberOfVertices, const double probability);
     ~DiGraph();
 
+    void PrintAllRepresentations() const;
+
 private:
     GraphRepresentation * m_graphRepr;
 };
