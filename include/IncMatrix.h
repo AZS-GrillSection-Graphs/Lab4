@@ -12,7 +12,9 @@
 class IncMatrix
 {
 public:
-    IncMatrix(const std::vector<std::vector<int>> & adjMatrix);
+    IncMatrix();
+    explicit IncMatrix(const std::vector<std::vector<int>>  incMatrix);
+    static IncMatrix ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int>> adjMatrix);
 
     virtual void Print() const;
     void PrintToFile() const;

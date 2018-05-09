@@ -12,7 +12,12 @@
 class AdjList
 {
 public:
-    AdjList(const std::vector<std::vector<int>> & adjMatrix);
+    AdjList();
+    explicit AdjList(const std::vector<std::vector<int>> adjList);
+    static AdjList ConstructAdjListFromAdjMatrix(std::vector<std::vector<int>> adjMatrix);
+
+    unsigned NumOfVertices() const {return static_cast<unsigned int>(m_adjList.size());}
+    std::vector<int> & operator[](const int index) {return m_adjList[index];}
 
     virtual void Print() const;
 

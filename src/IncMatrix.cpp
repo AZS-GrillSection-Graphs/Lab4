@@ -9,8 +9,20 @@
 #include <fstream>
 
 
-IncMatrix::IncMatrix(const std::vector <std::vector<int>> & adjMatrix)
+IncMatrix::IncMatrix()
 {
+
+}
+
+IncMatrix::IncMatrix(const std::vector <std::vector<int>> incMatrix)
+{
+    m_incMatrix = incMatrix;
+}
+
+IncMatrix IncMatrix::ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int>> adjMatrix)
+{
+    IncMatrix incMatrix;
+
     int numberOfEdges = 0;
 
     for(int i = 0; i < adjMatrix.size(); ++i)
@@ -32,7 +44,7 @@ IncMatrix::IncMatrix(const std::vector <std::vector<int>> & adjMatrix)
             row.emplace_back(0);
         }
 
-        m_incMatrix.emplace_back(row);
+        incMatrix.m_incMatrix.emplace_back(row);
     }
 
 
@@ -44,12 +56,14 @@ IncMatrix::IncMatrix(const std::vector <std::vector<int>> & adjMatrix)
         {
             if(adjMatrix[i][j] == 1)
             {
-                m_incMatrix[i][edge] = -1;
-                m_incMatrix[j][edge] = 1;
+                incMatrix.m_incMatrix[i][edge] = -1;
+                incMatrix.m_incMatrix[j][edge] = 1;
                 ++edge;
             }
         }
     }
+
+    return incMatrix;
 }
 
 void IncMatrix::Print() const

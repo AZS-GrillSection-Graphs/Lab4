@@ -17,7 +17,8 @@ public:
 
     void PrintAllRepresentations() const;
 
-    void Kosaraju();
+    std::vector<int> Kosaraju();
+    static void PrintComponent(std::vector<int> comp);
 
 private:
     AdjMatrix * m_graphRepr;

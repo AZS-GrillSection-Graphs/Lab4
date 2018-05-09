@@ -8,8 +8,23 @@
 #include <iomanip>
 
 
-AdjList::AdjList(const std::vector<std::vector<int>> & adjMatrix)
+
+
+AdjList::AdjList()
 {
+
+}
+
+AdjList::AdjList(const std::vector<std::vector<int>> adjList)
+{
+    m_adjList = adjList;
+}
+
+AdjList AdjList::ConstructAdjListFromAdjMatrix(std::vector<std::vector<int>> adjMatrix)
+{
+    AdjList adjList;
+    adjList.m_adjList.clear();
+
     for(unsigned int i = 0; i < adjMatrix.size(); ++i)
     {
         std::vector<int> row;
@@ -18,24 +33,27 @@ AdjList::AdjList(const std::vector<std::vector<int>> & adjMatrix)
         {
             if(adjMatrix[i][j] == 1)
             {
-                row.emplace_back(j + 1);
+                row.emplace_back(j);
             }
         }
-        m_adjList.emplace_back(row);
+        adjList.m_adjList.emplace_back(row);
     }
+
+    return adjList;
 }
 
 void AdjList::Print() const
 {
     std::cout << "Lista Sasiedztwa" << std::endl;
 
-    for(auto & row : m_adjList)
-    {
-        for(auto & item : row)
-        {
-            std::cout << std::setw(2) << item << " ";
-        }
 
+    for(int i = 0; i < m_adjList.size(); ++i)
+    {
+        std::cout << i + 1 << ": ";
+        for(int j = 0; j < m_adjList[i].size(); ++j)
+        {
+            std::cout << m_adjList[i][j] + 1 << " ";
+        }
         std::cout << std::endl;
     }
     std::cout << std::endl;

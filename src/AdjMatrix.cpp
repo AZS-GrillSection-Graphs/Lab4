@@ -63,12 +63,12 @@ void AdjMatrix::Print() const
 
 AdjList AdjMatrix::ConvertToAdjList() const
 {
-    return AdjList(m_adjMatrix);
+    return AdjList::ConstructAdjListFromAdjMatrix(m_adjMatrix);
 }
 
 IncMatrix AdjMatrix::ConvertToIncMatrix() const
 {
-    return IncMatrix(m_adjMatrix);
+    return IncMatrix::ConstructIncMatrixFromAdjMatrix(m_adjMatrix);
 }
 
 void AdjMatrix::ShowAllRepresentations() const
