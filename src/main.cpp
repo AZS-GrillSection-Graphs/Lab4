@@ -1,23 +1,33 @@
 #include <iostream>
+
 #include "DiGraph.h"
-
-
-using Component = std::vector<int>;
+#include "StronglyConnectedDiGraph.h"
 
 
 int main(int argc, const char * argv[])
 {
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    /////////////// Task 1 ///////////////
+    std::cout << "/////////////// Task 1 ///////////////" << std::endl << std::endl;
     DiGraph graph(5, 0.4);
     graph.PrintAllRepresentations();
+    graph.Draw();
 
 
-    /////////////// Task 2 ///////////////
-    Component biggestComp = graph.Kosaraju();
-    std::cout << "Biggest Component" << std::endl;
-    DiGraph::PrintComponent(biggestComp);
+    std::cout << "/////////////// Task 2 ///////////////" << std::endl;
+    Component comp = graph.Kosaraju();
+
+    std::cout << "Component from Kosaraju algorithm: " << std::endl;
+    comp.Print();
+
+    StronglyConnectedDiGraph SCDiGraph = StronglyConnectedDiGraph::FindStronglyConnectedDiGraph(graph, comp);
+
+    std::cout << std::endl << "Strongly Connected DiGraph: " << std::endl;
+    SCDiGraph.Print();
+    SCDiGraph.Draw();
+
+
+    std::cout << "/////////////// Task 3 ///////////////" << std::endl << std::endl;
 
     return 0;
 }

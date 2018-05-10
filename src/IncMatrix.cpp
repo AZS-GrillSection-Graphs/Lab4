@@ -34,7 +34,6 @@ IncMatrix IncMatrix::ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int
         }
     }
 
-
     for(int i = 0; i < adjMatrix.size(); ++i)
     {
         std::vector<int> row;
@@ -46,7 +45,6 @@ IncMatrix IncMatrix::ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int
 
         incMatrix.m_incMatrix.emplace_back(row);
     }
-
 
     int edge = 0;
 
@@ -64,6 +62,21 @@ IncMatrix IncMatrix::ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int
     }
 
     return incMatrix;
+}
+
+IncMatrix IncMatrix::ConstructIncMatrixFromAdjList(std::vector<std::vector<int>> adjList)
+{
+    std::vector<std::vector<int>> adjMatrix (adjList.size(), std::vector<int>(adjList.size(), 0));
+
+    for(int i = 0; i < adjMatrix.size(); ++i)
+    {
+        for (int j = 0; j < adjList[i].size(); ++j)
+        {
+            adjMatrix[i][adjList[i][j]] = 1;
+        }
+    }
+
+    return IncMatrix::ConstructIncMatrixFromAdjMatrix(adjMatrix);
 }
 
 void IncMatrix::Print() const

@@ -3,10 +3,11 @@
 //
 #include <iostream>
 #include <map>
+#include <StronglyConnectedDiGraph.h>
 
-#include "AdjMatrix.h"
 #include "GraphException.h"
 #include "DiGraph.h"
+
 
 DiGraph::DiGraph(const int numberOfVertices, const double probability)
 {
@@ -22,8 +23,10 @@ DiGraph::DiGraph(const int numberOfVertices, const double probability)
         std::cerr << er.what() << std::endl;
         exit(EXIT_FAILURE);
     }
+
+    std::cout << "Random DiGraph G(" << numberOfVertices << ", " << probability << ")" << std::endl << std::endl;
+
     m_graphRepr = new AdjMatrix(numberOfVertices, probability);
-    m_graphRepr->Print();
 }
 
 DiGraph::~DiGraph()
@@ -34,6 +37,15 @@ DiGraph::~DiGraph()
 void DiGraph::PrintAllRepresentations() const
 {
     m_graphRepr->ShowAllRepresentations();
+}
+
+void DiGraph::Draw() const
+{
+    IncMatrix incMatrix = m_graphRepr->ConvertToIncMatrix();
+    incMatrix.PrintToFile();
+
+    std::string command = "python3 DiGraphVisualization.py MacierzIncydencji.txt";
+    system(command.c_str());
 }
 
 void DFS_Visit(const unsigned index, AdjList & adjList, std::vector<bool> & visited, std::vector<int> & stack)
@@ -77,36 +89,7 @@ void Components_R(int numberOfComponent, int v, AdjList & adjList, std::vector<i
     }
 }
 
-std::vector<int> FindBiggestComponent(std::vector<int> comp)
-{
-    int max = 0;
-    int most_common = -1;
-
-    std::map<int, int> m;
-
-    for(auto vi = comp.begin(); vi != comp.end(); vi++)
-    {
-        m[*vi]++;
-
-        if (m[*vi] > max)
-        {
-            max = m[*vi];
-            most_common = *vi;
-        }
-    }
-
-    std::vector<int> biggest;
-
-    for(unsigned i = 0; i < comp.size(); ++i)
-    {
-        if(comp[i] == most_common)
-            biggest.emplace_back(i);
-    }
-
-    return biggest;
-}
-
-std::vector<int> DiGraph::Kosaraju()
+Component DiGraph::Kosaraju()
 {
     AdjList adjList = m_graphRepr->ConvertToAdjList();
 
@@ -149,16 +132,10 @@ std::vector<int> DiGraph::Kosaraju()
         }
     }
 
-    std::vector<int> biggestComponent = FindBiggestComponent(component);
-
-    return biggestComponent;
+    return Component(component);
 }
 
-void DiGraph::PrintComponent(std::vector<int> comp)
+AdjList DiGraph::GetAdjList() const
 {
-    for(auto & item : comp)
-    {
-        std::cout << item << " ";
-    }
-    std::cout << std::endl;
+    return m_graphRepr->ConvertToAdjList();
 }

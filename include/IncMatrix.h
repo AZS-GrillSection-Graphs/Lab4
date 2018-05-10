@@ -15,8 +15,9 @@ public:
     IncMatrix();
     explicit IncMatrix(const std::vector<std::vector<int>>  incMatrix);
     static IncMatrix ConstructIncMatrixFromAdjMatrix(std::vector<std::vector<int>> adjMatrix);
+    static IncMatrix ConstructIncMatrixFromAdjList(std::vector<std::vector<int>> adjList);
 
-    virtual void Print() const;
+    void Print() const;
     void PrintToFile() const;
 
 

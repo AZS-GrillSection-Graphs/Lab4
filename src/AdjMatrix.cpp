@@ -2,11 +2,9 @@
 // Created by piotr on 01.05.18.
 //
 #include <iostream>
-#include <GraphException.h>
 #include <iomanip>
+
 #include "AdjList.h"
-#include "IncMatrix.h"
-#include "AdjMatrix.h"
 
 
 int iRand(const int min, const int max)

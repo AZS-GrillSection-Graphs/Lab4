@@ -5,6 +5,7 @@
 #ifndef GRAPHS4_GRAPHEXCEPTION_H
 #define GRAPHS4_GRAPHEXCEPTION_H
 
+
 #include <string>
 #include <stdexcept>
 

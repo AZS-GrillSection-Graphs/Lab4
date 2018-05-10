@@ -7,6 +7,8 @@
 
 
 #include "AdjList.h"
+#include "StronglyConnectedDiGraph.h"
+#include "Component.h"
 
 
 class DiGraph
@@ -16,9 +18,10 @@ public:
     ~DiGraph();
 
     void PrintAllRepresentations() const;
+    void Draw() const;
 
-    std::vector<int> Kosaraju();
-    static void PrintComponent(std::vector<int> comp);
+    Component Kosaraju();
+    AdjList GetAdjList() const;
 
 private:
     AdjMatrix * m_graphRepr;
