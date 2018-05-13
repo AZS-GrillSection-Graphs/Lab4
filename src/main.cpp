@@ -9,7 +9,7 @@ int main(int argc, const char * argv[])
     srand(static_cast<unsigned int>(time(nullptr)));
 
     std::cout << "/////////////// Task 1 ///////////////" << std::endl << std::endl;
-    DiGraph graph(5, 0.4);
+    DiGraph graph(5, 0.5);
     graph.PrintAllRepresentations();
     graph.Draw();
 
@@ -24,10 +24,17 @@ int main(int argc, const char * argv[])
 
     std::cout << std::endl << "Strongly Connected DiGraph: " << std::endl;
     SCDiGraph.Print();
-    SCDiGraph.Draw();
 
 
     std::cout << "/////////////// Task 3 ///////////////" << std::endl << std::endl;
+    SCDiGraph.AssignWeights(-5, 10);
+    SCDiGraph.BellmanFord(0);
+    SCDiGraph.Draw();
+
+
+    std::cout << "/////////////// Task 4 ///////////////" << std::endl << std::endl;
+    
+
 
     return 0;
 }

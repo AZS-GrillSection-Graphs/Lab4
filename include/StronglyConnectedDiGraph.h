@@ -23,8 +23,17 @@ public:
     void Draw() const;
 
 
+    void AssignWeights(const int min, const int max);
+    bool BellmanFord(const int s);
+
+
 private:
+    static int iRand(const int min, const int max);
+    void Init(std::vector<int> & d, std::vector<int> & p, const int s);
+
+
     AdjList * m_adjList;
+    std::vector<std::vector<int>> m_weights;
 };
 
 #endif //GRAPHS4_STRONGLYCONNECTEDDIGRAPH_H
