@@ -9,7 +9,7 @@ int main(int argc, const char * argv[])
     srand(static_cast<unsigned int>(time(nullptr)));
 
     std::cout << "/////////////// Task 1 ///////////////" << std::endl << std::endl;
-    DiGraph graph(5, 0.5);
+    DiGraph graph(5, 0.0);
     graph.PrintAllRepresentations();
     graph.Draw();
 
@@ -33,7 +33,7 @@ int main(int argc, const char * argv[])
 
 
     std::cout << "/////////////// Task 4 ///////////////" << std::endl << std::endl;
-    
+
 
 
     return 0;
