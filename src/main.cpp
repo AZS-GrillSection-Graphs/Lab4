@@ -4,23 +4,23 @@
 #include "StronglyConnectedDiGraph.h"
 
 
-int main(int argc, const char * argv[])
+int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
 
     std::cout << "/////////////// Task 1 ///////////////" << std::endl << std::endl;
-    DiGraph graph(5, 0.0);
+    DiGraph graph(4, 0.7);
     graph.PrintAllRepresentations();
     graph.Draw();
 
 
-    std::cout << "/////////////// Task 2 ///////////////" << std::endl;
-    Component comp = graph.Kosaraju();
-
+    std::cout << "/////////////// Task 2 ///////////////" << std::endl << std::endl;
+    Component biggestComponent = graph.Kosaraju();
     std::cout << "Component from Kosaraju algorithm: " << std::endl;
-    comp.Print();
+    biggestComponent.PrintOriginIndex();
 
-    StronglyConnectedDiGraph SCDiGraph = StronglyConnectedDiGraph::FindStronglyConnectedDiGraph(graph, comp);
+    StronglyConnectedDiGraph SCDiGraph =
+            StronglyConnectedDiGraph::FindStronglyConnectedDiGraph(graph, biggestComponent);
 
     std::cout << std::endl << "Strongly Connected DiGraph: " << std::endl;
     SCDiGraph.Print();
@@ -28,12 +28,12 @@ int main(int argc, const char * argv[])
 
     std::cout << "/////////////// Task 3 ///////////////" << std::endl << std::endl;
     SCDiGraph.AssignWeights(-5, 10);
-    SCDiGraph.BellmanFord(0);
     SCDiGraph.Draw();
 
 
     std::cout << "/////////////// Task 4 ///////////////" << std::endl << std::endl;
-
+    std::cout << "Cost matrix from Johnson algorithm: " << std::endl;
+    SCDiGraph.Johnson();
 
 
     return 0;

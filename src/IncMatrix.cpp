@@ -1,18 +1,9 @@
-//
-// Created by piotr on 01.05.18.
-//
-
 #include <vector>
 #include <IncMatrix.h>
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 
-
-IncMatrix::IncMatrix()
-{
-
-}
 
 IncMatrix::IncMatrix(const std::vector <std::vector<int>> incMatrix)
 {
@@ -83,7 +74,7 @@ void IncMatrix::Print() const
 {
     PrintToFile();
 
-    std::cout << "Macierz Incydencji" << std::endl;
+    std::cout << "Incidence Matrix:" << std::endl;
 
     for(auto & row : m_incMatrix)
     {
@@ -99,7 +90,6 @@ void IncMatrix::Print() const
 
 void IncMatrix::PrintToFile() const
 {
-    ////////// Macierz incydencji //////////
     std::ofstream incMatrixFile;
 
     if (!incMatrixFile.is_open())

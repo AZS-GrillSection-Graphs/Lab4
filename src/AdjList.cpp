@@ -1,7 +1,3 @@
-//
-// Created by piotr on 01.05.18.
-//
-
 #include "AdjMatrix.h"
 #include "AdjList.h"
 #include <iostream>
@@ -52,7 +48,7 @@ std::vector<int> AdjList::operator[](const int index) const
 
 void AdjList::Print() const
 {
-    std::cout << "Lista Sasiedztwa" << std::endl;
+    std::cout << "Adjacency List:" << std::endl;
 
 
     for(int i = 0; i < m_adjList.size(); ++i)

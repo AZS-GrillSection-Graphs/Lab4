@@ -1,7 +1,3 @@
-//
-// Created by piotr on 10.05.18.
-//
-
 #include <iostream>
 #include <map>
 #include <algorithm>
@@ -14,6 +10,15 @@ void Component::Print() const
     for(auto & item : m_component)
     {
         std::cout << item + 1 << " ";
+    }
+    std::cout << std::endl;
+}
+
+void Component::PrintOriginIndex() const
+{
+    for(auto & item : m_component)
+    {
+        std::cout << item << " ";
     }
     std::cout << std::endl;
 }
@@ -66,7 +71,7 @@ Component Component::FindBiggestComponent() const
     return biggest;
 }
 
-int Component::IndexOfElement(const int element)
+int Component::IndexOfElement(const int element) const
 {
     int i;
 
@@ -86,7 +91,7 @@ void Component::emplace_back(const int value)
 
 unsigned Component::size() const
 {
-    m_component.size();
+    return m_component.size();
 }
 
 int Component::operator[](const int index) const

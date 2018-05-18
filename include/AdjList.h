@@ -1,7 +1,3 @@
-//
-// Created by piotr on 01.05.18.
-//
-
 #ifndef GRAPHS4_ADJLIST_H
 #define GRAPHS4_ADJLIST_H
 
@@ -32,7 +28,6 @@ public:
 
 private:
     std::vector<std::vector<int>>m_adjList;
-
 };
 
 #endif //GRAPHS4_ADJLIST_H

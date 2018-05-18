@@ -10,6 +10,7 @@ if not linecache.getline(sys.argv[1], 2):
     sys.exit()
 
 matrix = np.loadtxt(sys.argv[1], dtype = int, skiprows = 1)
+weights = np.loadtxt(sys.argv[2], dtype = int)
 
 verticles = matrix.shape[0]
 x = []
@@ -46,7 +47,8 @@ for j in range(columns):
             break   
         if matrix[i][j] == -1:
             break  
-    plt.plot(edge_x, edge_y, c = 'k')
-    plt.annotate('', xytext = (edge_x[0], edge_y[0]), xy = (edge_x[0] + (edge_x[1] - edge_x[0])/2, edge_y[0] + (edge_y[1] - edge_y[0])/2), arrowprops={'arrowstyle': '-|>'})
+    plt.plot(edge_x, edge_y, c = 'b')
+    plt.annotate( weights[j], xy = (edge_x[0] + (edge_x[1] - edge_x[0])/4, edge_y[0] + (edge_y[1] - edge_y[0])/4), color='r')
+    plt.annotate('', xytext = (edge_x[0], edge_y[0]), xy = (edge_x[0] + (edge_x[1] - edge_x[0])/2, edge_y[0] + (edge_y[1] - edge_y[0])/2), color='b', arrowprops={'arrowstyle': '-|>'})
       
 plt.show()

@@ -1,6 +1,3 @@
-//
-// Created by piotr on 01.05.18.
-//
 #include <iostream>
 #include <iomanip>
 
@@ -14,8 +11,6 @@ int iRand(const int min, const int max)
 
 AdjMatrix::AdjMatrix(const int numberOfVertices, const double probability)
 {
-
-
     for(int i = 0; i < numberOfVertices; ++i)
     {
         std::vector<int>row;
@@ -46,7 +41,7 @@ AdjMatrix::AdjMatrix(const int numberOfVertices, const double probability)
 
 void AdjMatrix::Print() const
 {
-    std::cout << "Macierz Sasiedztwa" << std::endl;
+    std::cout << "Adjacency Matrix:" << std::endl;
 
     for(auto & row : m_adjMatrix)
     {
@@ -78,10 +73,3 @@ void AdjMatrix::ShowAllRepresentations() const
     incMatrix.Print();
     adjList.Print();
 }
-
-
-
-
-
-
-

@@ -1,7 +1,3 @@
-//
-// Created by piotr on 01.05.18.
-//
-
 #ifndef GRAPHS4_ADJMATRIX_H
 #define GRAPHS4_ADJMATRIX_H
 
@@ -17,7 +13,7 @@ class AdjMatrix
 {
 public:
     AdjMatrix(const int numberOfVertices, const double probability);
-    ~AdjMatrix() {}
+    ~AdjMatrix() = default;
     void Print() const;
     AdjList ConvertToAdjList() const;
     IncMatrix ConvertToIncMatrix() const;

@@ -1,10 +1,8 @@
-//
-// Created by piotr on 01.05.18.
-//
 #include <iostream>
 #include <map>
-#include <StronglyConnectedDiGraph.h>
+#include <vector>
 
+#include "StronglyConnectedDiGraph.h"
 #include "GraphException.h"
 #include "DiGraph.h"
 

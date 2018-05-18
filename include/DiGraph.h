@@ -1,7 +1,3 @@
-//
-// Created by piotr on 01.05.18.
-//
-
 #ifndef GRAPHS4_DIGRAPH_H
 #define GRAPHS4_DIGRAPH_H
 
