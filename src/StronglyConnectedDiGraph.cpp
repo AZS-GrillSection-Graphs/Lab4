@@ -204,6 +204,7 @@ std::vector<std::vector<int>> StronglyConnectedDiGraph::Johnson()
         }
     }
 
+    std::cout << "Cost matrix from Johnson algorithm: " << std::endl;
     StronglyConnectedDiGraph::PrintMatrix(dMatrix);
 
     return dMatrix;
@@ -268,6 +269,8 @@ std::vector<int> StronglyConnectedDiGraph::Dijkstra(const int u)
         }
     }
 
+    PrintPaths(u, p);
+
     return d;
 }
 
@@ -297,4 +300,45 @@ void StronglyConnectedDiGraph::PrintMatrix(const std::vector<std::vector<int>> &
         std::cout << std::endl;
     }
     std::cout <<std::endl;
+}
+
+void StronglyConnectedDiGraph::PrintPaths(const int chosenVertex,
+                                          std::vector<int> & predecessorsArray) const
+{
+    std::cout << "Paths from vertex " << chosenVertex + 1 << " : " << std::endl;
+
+    for (int i = 0; i < m_adjList->NumOfVertices(); ++i)
+    {
+        printf("Path to vertex %2d: ", i + 1);
+
+        int currentVertex = i;
+
+        if(currentVertex == chosenVertex)
+        {
+            std::cout << "already there";
+            currentVertex = -1;
+        }
+        else
+        {
+            std::cout << i + 1 << " <- ";
+        }
+
+        while(currentVertex > -1)
+        {
+            if(predecessorsArray[currentVertex] != chosenVertex)
+            {
+                std::cout << predecessorsArray[currentVertex] + 1 << " <- ";
+            }
+            else {
+                std::cout << predecessorsArray[currentVertex] + 1;
+                break;
+            }
+
+            currentVertex = predecessorsArray[currentVertex];
+        }
+
+        std::cout << std::endl;
+    }
+
+    std::cout << std::endl;
 }

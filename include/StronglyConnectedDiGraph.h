@@ -32,7 +32,8 @@ private:
     std::vector<int> Dijkstra(const int u);
     int IndexOfElement(const std::vector<bool> & vec, const bool element) const;
     static void PrintMatrix(const std::vector<std::vector<int>> & matrix);
-
+    void PrintPaths(const int chosenVertex,
+                    std::vector<int> &predecessorsArray) const;
 
     AdjList * m_adjList;
     std::vector<std::vector<int>> m_weights;

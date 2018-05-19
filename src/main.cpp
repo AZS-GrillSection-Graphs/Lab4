@@ -32,7 +32,6 @@ int main()
 
 
     std::cout << "/////////////// Task 4 ///////////////" << std::endl << std::endl;
-    std::cout << "Cost matrix from Johnson algorithm: " << std::endl;
     SCDiGraph.Johnson();
 
 
