@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.3)
+cmake_minimum_required(VERSION 3.9)
 project(Graphs4)
 set(EXECUTABLE_NAME "Graphs4")
 
